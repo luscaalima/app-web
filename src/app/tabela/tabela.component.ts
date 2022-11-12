@@ -58,10 +58,12 @@ export class TabelaComponent implements OnInit {
   }
   edit(musica: Musica) {
     console.log('musica a ser editada', musica)
-    const dialogRef = this.dialog.open(ViewMusicComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+     this.dialog.open(ViewMusicComponent,{
+      data:{
+      music:musica,
+    }
+    }).afterClosed().subscribe(result => {
+     
     });
     // .afterClosed().subscribe(res => { console.log(res) });
 

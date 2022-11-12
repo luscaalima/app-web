@@ -8,7 +8,6 @@ import { RequisicaoService } from './services/requisicao.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // musicas:any;
   musicas: Musica[];
   cantor: string;
   constructor(
