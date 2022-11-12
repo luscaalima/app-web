@@ -1,6 +1,8 @@
-import { RequisicaoService } from './../requisicao.service';
+import { RequisicaoService } from '../services/requisicao.service';
 import { Component, OnInit } from '@angular/core';
 import { Musica } from '../musica.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewMusicComponent } from '../dialogs/view-music/view-music.component';
 export interface InfoMusica {
   name: string;
   cantor: string;
@@ -16,42 +18,54 @@ export interface InfoMusica {
 /**
  * @title Basic use of `<table mat-table>`
  */
- @Component({
+@Component({
   selector: 'app-tabela',
   templateUrl: './tabela.component.html',
   styleUrls: ['./tabela.component.css']
 })
 export class TabelaComponent implements OnInit {
-  musicas:Musica[];
+  musicas: Musica[];
   displayedColumns: string[] = ['nome', 'cantor'];
   ELEMENT_DATA: Musica[] = [];
-  dataSource:any[]
+  dataSource: any[]
   constructor(
-    public requisicaoService:RequisicaoService
-  ) { 
+    public requisicaoService: RequisicaoService,
+    public dialog: MatDialog,
+
+  ) {
     this.musicas = []
-    this.dataSource =[]
+    this.dataSource = []
     this.chamarRequisicao();
   }
 
   ngOnInit(): void {
     console.log('passou')
-    // s
-      this.dataSource = this.ELEMENT_DATA;
+    this.dataSource = this.ELEMENT_DATA;
   }
-  chamarRequisicao(){
-    this.requisicaoService.get().subscribe(data=> {
-    this.musicas=data
+  chamarRequisicao() {
+    this.requisicaoService.get().subscribe(data => {
+      this.musicas = data
     });
-    console.log('musicas',this.musicas)
+    console.log('musicas', this.musicas)
   }
-  print(){
-    console.log('musicas',this.musicas) 
+  print() {
+    console.log('musicas', this.musicas)
     this.dataSource = []
-    this.musicas.forEach(musica=>{
+    this.musicas.forEach(musica => {
       console.log(musica)
       this.dataSource.push(musica)
     })
+  }
+  edit(musica: Musica) {
+    console.log('musica a ser editada', musica)
+    const dialogRef = this.dialog.open(ViewMusicComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    // .afterClosed().subscribe(res => { console.log(res) });
+
 
   }
+
 }
