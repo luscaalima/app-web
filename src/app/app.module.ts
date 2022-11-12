@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatSliderModule } from '@angular/material/slider';
+import {MatTableModule} from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { TabelaComponent } from './tabela/tabela.component';
@@ -16,7 +16,7 @@ import { TabelaComponent } from './tabela/tabela.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    MatSliderModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
