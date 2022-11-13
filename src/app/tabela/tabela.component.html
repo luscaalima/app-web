@@ -6,13 +6,13 @@
     <!-- Position Column -->
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef> Cantor </th>
-      <td mat-cell *matCellDef="let element"  (click)="edit(element)"> {{element.cantor}} </td>
+      <td mat-cell *matCellDef="let element"  (click)="edit(element,true)"> {{element.cantor}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="cantor">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let element" (click)="edit(element)"> {{element.nome}} </td>
+      <td mat-cell *matCellDef="let element" (click)="edit(element,true)"> {{element.nome}} </td>
     </ng-container>
   
     
@@ -20,5 +20,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   
-  <button (click)="chamarRequisicao()">sasass</button>
-  <button (click)="print()">print</button>
+  <button (click)="print()">sasass</button>
+  <button (click)="adicionarMusica()">Adicionar Musica</button>

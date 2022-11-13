@@ -10,42 +10,43 @@ import { Musica } from 'src/app/musica.model';
 })
 export class ViewMusicComponent implements OnInit {
 
-musica:Musica;
-
+  musica: Musica;
+  edit:boolean;
   constructor(
     public dialogRef: MatDialogRef<ViewMusicComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any,
-      ) {
-         console.log('data.music',this.data.music)
-        // this.musica = this.data.music
-        this.musica = JSON.parse(JSON.stringify(this.data.music));
-console.log('musica',this.musica)
-      }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {
+    console.log('data.music', this.data.music)
+    // this.musica = this.data.music
+    this.musica = JSON.parse(JSON.stringify(this.data.music));
+    this.edit = JSON.parse(JSON.stringify(this.data.edit));
+    console.log('musica', this.musica)
+  }
 
   ngOnInit(): void {
     console.log(this.data)
   }
-  teste(){
-    console.log('musica alterada',this.musica) 
-    console.log( 'veio da tabela',this.data.music)
+  teste() {
+    console.log('musica alterada', this.musica)
+    console.log('veio da tabela', this.data.music)
   }
-updateMusica(){
-  console.log('musica alterada',this.musica) 
-  console.log( 'veio da tabela',this.data.music)
-  let edit:boolean;
-  if (  (this.musica.cantor ===   this.data.music.cantor ) &&     (this.musica.nome ===   this.data.music.nome )  ) {
-    console.log('IGUAL');
-    // Não faz nada
-    edit = false
-  }
-  else {
-    console.log('EDITOU');
-    // POST API
-    this.data.music=this.musica
-    edit = true
-  }
+  updateMusica() {
+    console.log('musica alterada', this.musica)
+    console.log('veio da tabela', this.data.music)
+    let edit: boolean;
+    if ((this.musica.cantor === this.data.music.cantor) && (this.musica.nome === this.data.music.nome)) {
+      console.log('IGUAL');
+      // Não faz nada
+      edit = false
+    }
+    else {
+      console.log('EDITOU');
+      // POST API
+      this.data.music = this.musica
+      edit = true
+    }
 
 
-  this.dialogRef.close({ type: 'save',music:this.musica ,update:edit});
-}
+    this.dialogRef.close({ type: 'save', music: this.musica, update: edit });
+  }
 }

@@ -7,5 +7,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="teste()">No Thanks</button>
-  <button mat-button (click)="updateMusica()"style="margin-left:30px;">UPDATE</button>
+  <button mat-button  *ngIf="edit"  (click)="updateMusica()"style="margin-left:30px;">UPDATE</button>
+  <button mat-button  *ngIf="!edit"  (click)="updateMusica()"style="margin-left:30px;">INCLUIR</button>
 </div>

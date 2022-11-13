@@ -3,17 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Musica } from '../musica.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewMusicComponent } from '../dialogs/view-music/view-music.component';
-export interface InfoMusica {
-  name: string;
-  cantor: string;
-}
-
-// const ELEMENT_DATA: InfoMusica[] = [
-//   {name:'Mundo Covarde',cantor:'MC Poze'},
-//   {name:'Ai Calica',cantor:'MC Poze'},
-//   {name:'Lucas',cantor:'teste'},
-//   {name:'Lucas',cantor:'teste'},
-//   ];
+// export interface InfoMusica {
+//   name: string;
+//   cantor: string;
+// }
 
 /**
  * @title Basic use of `<table mat-table>`
@@ -56,22 +49,41 @@ export class TabelaComponent implements OnInit {
       this.dataSource.push(musica)
     })
   }
-  edit(musica: Musica) {
+  adicionarMusica(){
+console.log('addcionar musica')
+// ARRUMAR ESSA GAMBIARRA FEIA
+const novaMusica = {
+'cantor':'',
+'nome':''
+}
+this.edit(novaMusica,false)
+// console.log(novaMusica)
+// novaMusica.nome=''
+// novaMusica.cantor=''
+
+
+
+  }
+  edit(musica: Musica,k:boolean) {
     console.log('musica a ser editada', musica)
     this.dialog.open(ViewMusicComponent, {
       width: '400px',
       height: '400px',
       data: {
         music: musica,
-      }
+        edit:k
+      },
+      disableClose: true
     }).afterClosed().subscribe(result => {
       console.log(result);
       if (result.update) {
         console.log('editar');
-      } else {
-        console.log('Não editar');
-      }
-
+        const musica = result.music
+        this.requisicaoService.update(musica)
+      } 
+      // else {
+      //   console.log('Não editar');
+      // }
     });
   }
 

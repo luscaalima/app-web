@@ -28,4 +28,8 @@ post(cantor:string,nome:string){
 }
     return this.httpClient.post(`${this.apiUrl}/criar-musica`, musica).toPromise();
   }
+  update(musica:Musica){
+    console.log('atualizar essa musica no firebase',musica)
+    // return this.httpClient.post<Musica[]>(`${this.apiUrl}/musica`,musica)  
+  }
 }
