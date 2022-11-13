@@ -61,6 +61,7 @@ export class TabelaComponent implements OnInit {
   }
   edit(musica: Musica, k: boolean) {
     console.log('musica a ser editada', musica)
+   const  oldMusic = musica
     this.dialog.open(ViewMusicComponent, {
       width: '400px',
       height: '400px',
@@ -77,7 +78,7 @@ export class TabelaComponent implements OnInit {
           this.requisicaoService.post(result.music.nome,result.music.cantor)
         } else{
           const musica = result.music
-          this.requisicaoService.update(musica)
+          this.requisicaoService.update(oldMusic,musica)
         }
        
       }
