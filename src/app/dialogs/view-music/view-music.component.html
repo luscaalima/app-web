@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Hi {{data.music.name}}</h1>
 <div mat-dialog-content>
   
-    <input matInput [(ngModel)]="musica.cantor">
-    <input matInput [(ngModel)]="musica.nome">
+    <input matInput [(ngModel)]="musica.cantor"class="input">
+    <input matInput [(ngModel)]="musica.nome"class="input">
  
 </div>
 <div mat-dialog-actions>
-  <button mat-button >No Thanks</button>
-  <button mat-button >UPDATE</button>
+  <button mat-button (click)="teste()">No Thanks</button>
+  <button mat-button (click)="updateMusica()"style="margin-left:30px;">UPDATE</button>
 </div>

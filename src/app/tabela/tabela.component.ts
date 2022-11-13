@@ -58,16 +58,21 @@ export class TabelaComponent implements OnInit {
   }
   edit(musica: Musica) {
     console.log('musica a ser editada', musica)
-     this.dialog.open(ViewMusicComponent,{
-      data:{
-      music:musica,
-    }
+    this.dialog.open(ViewMusicComponent, {
+      width: '400px',
+      height: '400px',
+      data: {
+        music: musica,
+      }
     }).afterClosed().subscribe(result => {
-     
+      console.log(result);
+      if (result.update) {
+        console.log('editar');
+      } else {
+        console.log('Não editar');
+      }
+
     });
-    // .afterClosed().subscribe(res => { console.log(res) });
-
-
   }
 
 }
