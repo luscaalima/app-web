@@ -49,41 +49,38 @@ export class TabelaComponent implements OnInit {
       this.dataSource.push(musica)
     })
   }
-  adicionarMusica(){
-console.log('addcionar musica')
-// ARRUMAR ESSA GAMBIARRA FEIA
-const novaMusica = {
-'cantor':'',
-'nome':''
-}
-this.edit(novaMusica,false)
-// console.log(novaMusica)
-// novaMusica.nome=''
-// novaMusica.cantor=''
-
-
+  adicionarMusica() {
+    console.log('addcionar musica')
+    // ARRUMAR ESSA GAMBIARRA FEIA
+    const novaMusica = {
+      'cantor': '',
+      'nome': ''
+    }
+    this.edit(novaMusica, false)
 
   }
-  edit(musica: Musica,k:boolean) {
+  edit(musica: Musica, k: boolean) {
     console.log('musica a ser editada', musica)
     this.dialog.open(ViewMusicComponent, {
       width: '400px',
       height: '400px',
       data: {
         music: musica,
-        edit:k
+        edit: k
       },
       disableClose: true
     }).afterClosed().subscribe(result => {
       console.log(result);
       if (result.update) {
-        console.log('editar');
-        const musica = result.music
-        this.requisicaoService.update(musica)
-      } 
-      // else {
-      //   console.log('Não editar');
-      // }
+        if(result.type ==='novo'){
+          console.log('criar nova musica');
+          this.requisicaoService.post(result.music.nome,result.music.cantor)
+        } else{
+          const musica = result.music
+          this.requisicaoService.update(musica)
+        }
+       
+      }
     });
   }
 

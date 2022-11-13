@@ -45,8 +45,9 @@ export class ViewMusicComponent implements OnInit {
       this.data.music = this.musica
       edit = true
     }
-
-
     this.dialogRef.close({ type: 'save', music: this.musica, update: edit });
+  }
+  incluirMusica(){
+    this.dialogRef.close({ type: 'novo', music: this.musica, update: true});
   }
 }
