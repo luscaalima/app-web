@@ -1,3 +1,4 @@
+import { SpotifyService } from './../services/spotify.service';
 import { RequisicaoService } from '../services/requisicao.service';
 import { Component, OnInit } from '@angular/core';
 import { Musica } from '../musica.model';
@@ -18,14 +19,17 @@ import { ViewMusicComponent } from '../dialogs/view-music/view-music.component';
 })
 export class TabelaComponent implements OnInit {
   musicas: Musica[];
+  url_image:string;
   displayedColumns: string[] = ['nome', 'cantor'];
   ELEMENT_DATA: Musica[] = [];
   dataSource: any[]
   constructor(
     public requisicaoService: RequisicaoService,
+    public spotifyService:SpotifyService,
     public dialog: MatDialog,
 
   ) {
+    this.url_image=''
     this.musicas = []
     this.dataSource = []
     this.chamarRequisicao();
@@ -83,6 +87,14 @@ export class TabelaComponent implements OnInit {
        
       }
     });
+  }
+
+  get_playlist_spotify(){
+    this.spotifyService.get().subscribe(data => {
+      this.url_image = data.items[0].track.album.images[0].url
+      console.log('data', data.items[0].track.album.images[0].url)
+    });
+
   }
 
 }
