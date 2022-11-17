@@ -1,0 +1,20 @@
+<div class="header">
+
+    <div *ngFor="let  item of items" style="margin-left:100px;margin-top:50px;display:inline-flex;" >
+
+     <div style="background-color: blue;width:200px;height: 200px;margin-right: 25px;" >
+            
+            <img [src]="item.uri"style="height:200px" >
+            <div style="font-weight: bold;" >
+                {{item.nome_musica}}
+            </div>
+     </div>
+
+
+
+
+    </div>
+
+
+
+</div>
