@@ -9,8 +9,8 @@ import { SpotifyService } from './../services/spotify.service';
 })
 export class HomeComponent implements OnInit {
 
-    @Input()
-    osbrabos: Array<any>=[];
+@Input()
+osbrabos: Array<any>=[];
 
 cards:any[]
 
@@ -31,13 +31,13 @@ items:MusicaSP[];
   }
 
    osBrabo(){
-    this.osbrabos.forEach((card,index)=>{
-        console.log(card)
-        console.log(index)
+    this.osbrabos.forEach((card:any)=>{
+        // console.log(card)
         let item=new MusicaSP();
         item.artists =card.artists
         item.uri =card.album.images[0].url
         item.nome_musica=card.name
+        item.uri_track = card.uri
         console.log(item)
         this.items.push(item)
       })
@@ -45,6 +45,7 @@ items:MusicaSP[];
   }
   showItem(item:any){
     console.log(item)
+    this.spotifyService.add_next_music(item.uri_track);
   }
 
 }

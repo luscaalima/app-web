@@ -24,4 +24,8 @@ export class SpotifyService {
   get_os_brabos(): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/sp-brabos`)
   }
+  add_next_music(uri_track:any){
+  const  uri_track_next_music ={"uri":uri_track}
+    return this.httpClient.post(`${this.apiUrl}/sp-add-next-music`,  uri_track_next_music).toPromise()
+  }
 }
