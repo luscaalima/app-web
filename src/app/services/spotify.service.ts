@@ -21,6 +21,12 @@ export class SpotifyService {
   get(): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/sp-get-playlists-musics`)
   }
+  get_playlist_items(id_playlist:string): Observable<any> {
+   const  body = {
+      "id_playlist":id_playlist
+  }
+    return this.httpClient.post<any>(`${this.apiUrl}/sp-get-playlists-musics`,body);
+  }
   get_playlists(): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/sp-get-playlists`)
   }

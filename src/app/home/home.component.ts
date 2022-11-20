@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MusicaSP } from '../musica.model';
+import { AddMusicComponent } from '../dialogs/add-music/add-music.component';
+import { InfoPlaylist, MusicaSP } from '../musica.model';
 import { SpotifyService } from './../services/spotify.service';
 
 const THUMBUP_ICON =
@@ -24,6 +26,8 @@ export class HomeComponent implements OnInit {
 
 @Input()
 osbrabos: Array<any>=[];
+@Input()
+playlists: Array<InfoPlaylist>=[];
 
 cards:any[]
 
@@ -32,6 +36,7 @@ items:MusicaSP[];
 
 
   constructor(
+    public dialog: MatDialog,
     public spotifyService:SpotifyService,
     iconRegistry: MatIconRegistry, sanitizer: DomSanitizer
   ) { 
@@ -42,9 +47,32 @@ items:MusicaSP[];
   }
 
   ngOnInit(): void {
- 
+ console.log(this.playlists)
   }
-
+  addMusic(item:any){
+    console.log(item)
+    this.dialog.open(AddMusicComponent, {
+      width: '400px',
+      height: '400px',
+      data: {
+       playlists:this.playlists,
+       musica:item
+      },
+      disableClose: true
+    }).afterClosed().subscribe(result => {
+      console.log(result);
+      if (result.update) {
+        if(result.type ==='novo'){
+          console.log('criar nova musica');
+          // this.requisicaoService.post(result.music.nome,result.music.cantor)
+        } else{
+          // const musica = result.music
+          // this.requisicaoService.update(oldMusic,musica)
+        }
+       
+      }
+    });
+  }
    osBrabo(){
     this.osbrabos.forEach((card:any)=>{
         // console.log(card)

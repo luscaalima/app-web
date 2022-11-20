@@ -1,0 +1,12 @@
+    <h4>Deseja Adicionar a "musica" em qual playlist</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Playlist</mat-label>
+      <mat-select [(ngModel)]="playlistValue" name="food">
+        <mat-option *ngFor="let playlist of playlists" [value]="playlist">
+          {{playlist. nome_playlist}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p> Selected food: {{playlistValue.nome_playlist}} </p>
+
+<button (click)="add_music_playlist()"> ADD</button>

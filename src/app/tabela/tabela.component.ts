@@ -90,10 +90,10 @@ export class TabelaComponent implements OnInit {
   }
 
   get_playlist_spotify(){
-    this.spotifyService.get().subscribe(data => {
-      this.url_image = data.items[0].track.album.images[0].url
-      console.log('data', data.items[0].track.album.images[0].url)
-    });
+    // this.spotifyService.get().subscribe(data => {
+    //   this.url_image = data.items[0].track.album.images[0].url
+    //   console.log('data', data.items[0].track.album.images[0].url)
+    // });
 
   }
 

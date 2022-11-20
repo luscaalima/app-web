@@ -7,6 +7,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { ViewMusicComponent } from './dialogs/view-music/view-music.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { LeftComponent } from './left/left.component';
+import { AddMusicComponent } from './dialogs/add-music/add-music.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { LeftComponent } from './left/left.component';
     ViewMusicComponent,
     SidenavComponent,
     HomeComponent,
-    LeftComponent
+    LeftComponent,
+    AddMusicComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { LeftComponent } from './left/left.component';
     MatDialogModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
     
   ],
   providers: [],

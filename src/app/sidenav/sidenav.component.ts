@@ -40,7 +40,10 @@ export class SidenavComponent implements OnInit {
 
         let playlist = new InfoPlaylist();
          playlist.id = element.id;
-         playlist.img = element.images[0].url;
+         if(element.images.length > 0){
+          playlist.img = element.images[0].url;
+         }
+        
          playlist.nome_playlist = element.name
         this.playlists.push(playlist)
       });
