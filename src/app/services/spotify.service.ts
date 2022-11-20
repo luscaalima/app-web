@@ -21,6 +21,9 @@ export class SpotifyService {
   get(): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/sp-get-playlists-musics`)
   }
+  get_playlists(): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/sp-get-playlists`)
+  }
   get_os_brabos(): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/sp-brabos`)
   }

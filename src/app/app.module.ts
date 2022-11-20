@@ -14,6 +14,7 @@ import { TabelaComponent } from './tabela/tabela.component';
 import { ViewMusicComponent } from './dialogs/view-music/view-music.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
+import { LeftComponent } from './left/left.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     TabelaComponent,
     ViewMusicComponent,
     SidenavComponent,
-    HomeComponent
+    HomeComponent,
+    LeftComponent
   ],
   imports: [
     BrowserModule,

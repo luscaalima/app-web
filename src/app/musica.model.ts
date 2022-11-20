@@ -17,3 +17,15 @@ constructor(){
     this.like=false
 }
 }
+export class InfoPlaylist{
+    nome_playlist:string;
+    id:string;  
+    img:string
+    
+constructor(){
+    this.nome_playlist = "";
+    this.id ="";
+    this.img=""
+    
+}
+}
