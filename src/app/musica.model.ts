@@ -8,10 +8,12 @@ export class MusicaSP{
     uri:string  
     artists:any[];  
     uri_track:string;
+    like:boolean;
 constructor(){
     this.nome_musica = "";
     this.uri ="";
     this.artists=[];
     this.uri_track=""
+    this.like=false
 }
 }

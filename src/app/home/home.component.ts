@@ -63,9 +63,17 @@ items:MusicaSP[];
     this.spotifyService.add_next_music(item.uri_track);
   }
   like(item:MusicaSP){
+    item.like = true
     // adiconar essa musica em likedSongs
     const track=item.uri_track.split(':')[2]
     this.spotifyService.add_music_likes(track);
+  }
+  notLike(item:MusicaSP){
+    item.like = false
+    console.log(item)
+    // adiconar essa musica em likedSongs
+    const track=item.uri_track.split(':')[2]
+    this.spotifyService.del_music_likes(track);
   }
   share(item:MusicaSP){
      // compartilhar no instagram via api
