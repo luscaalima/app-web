@@ -2,6 +2,7 @@ import { InfoPlaylist, MusicaSP } from './../../musica.model';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -38,6 +39,11 @@ export class AddMusicComponent implements OnInit {
     console.log( this.musica)
     // this.playlists.find()
     this.spotifyService.add_music_playlist(this.playlistValue.id,this.musica.uri_track.split(':')[2])
+    Swal.fire({
+      title: `<b>${this.playlistValue.nome_playlist}</b> atualizada`,
+      text: `${this.musica.nome_musica} adicionada`,
+      icon: "success"
+    });
     this.dialogRef.close({ type: 'novo', music: this.musica, update: true});
   }
 
