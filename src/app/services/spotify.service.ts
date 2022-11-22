@@ -55,4 +55,7 @@ export class SpotifyService {
       const  uri_track_music ={"uri":uri_track};
       return this.httpClient.put(`${this.apiUrl}/sp-del-music-likes`, uri_track_music).toPromise()
       }
+  next_music(){
+      return this.httpClient.get(`${this.apiUrl}/sp-next-music`).toPromise()
+      }
 }

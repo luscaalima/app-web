@@ -1,39 +1,30 @@
 <div class="header">
 
 
-    <h1 (click)="osBrabo()"> Os brabos</h1>
-
+    <h1 (click)="osBrabo()">Principais faixas</h1>
+    <mat-icon (click)="next_music()">skip_next</mat-icon>
     <div *ngFor="let  item of items" style="margin-left:100px;margin-top:50px;display:inline-flex;" >
 
       <mat-icon (click)="addMusic(item)" >library_add</mat-icon>
 
      <div style="width:200px;height: 200px;margin-right: 25px;" >
             
-            <img [src]="item.uri"style="height:200px" (click)="showItem(item)">
+            <img [src]="item.uri"style="height:200px" (click)="add_next_music(item)">
             <div style="font-weight: bold;" >
                 {{item.nome_musica}}
             </div>
      </div>
 
      <div style="display:grid">
-        <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <mat-icon (click)="save(item)">save</mat-icon>
       <div *ngIf="!item.like">
         <mat-icon (click)="like(item)">favorite</mat-icon>
       </div>
       <div *ngIf="item.like">
         <mat-icon (click)="notLike(item)" style="color: red;">favorite</mat-icon>
       </div>
-      
-      
-        
         <mat-icon (click)="share(item)">share</mat-icon>
      </div>
-
-
-
-
     </div>
-
-
-
 </div>
+
